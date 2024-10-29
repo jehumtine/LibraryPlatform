@@ -54,4 +54,9 @@ public class BooksService(LibraryContext libdb): IBooksService
     {
         return await libdb.Books.Where(x => x.Author.ToLower().Contains(name)).ToListAsync();
     }
+
+    public async Task<List<Category>> GetCategories()
+    {
+        return await libdb.Categories.Include(x => x.Books).ToListAsync();
+    }
 }

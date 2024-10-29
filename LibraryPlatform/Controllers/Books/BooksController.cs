@@ -53,5 +53,11 @@ public class BooksController(IBooksService service): ControllerBase
     {
         return await service.GetBooksByAuthor(name);
     }
+
+    [HttpGet("/get-categories")]
+    public async Task<List<Category>> GetCategories()
+    {
+        return await service.GetCategories();
+    }
     
 }

@@ -10,4 +10,5 @@ public interface IBooksService
     Task<Book> EditBook(BookUpdateRequest book);
     Task<List<Book>> GetBooksByCategory(int id);
     Task<List<Book>> GetBooksByAuthor(string name);
+    Task<List<Category>> GetCategories();
 }
