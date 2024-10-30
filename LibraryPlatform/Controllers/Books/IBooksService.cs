@@ -11,4 +11,7 @@ public interface IBooksService
     Task<List<Book>> GetBooksByCategory(int id);
     Task<List<Book>> GetBooksByAuthor(string name);
     Task<List<Category>> GetCategories();
+    Task<int> GetBooksBorrowedCount();
+    Task<int> GetTotalBooksCount();
+    
 }

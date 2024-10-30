@@ -1,5 +1,6 @@
 namespace LibraryPlatform.Models;
 
+
 public class Book
 {
     public int Id { get; set; }  
@@ -16,6 +17,7 @@ public class Book
     public int TotalCopies { get; set; }  
     public int AvailableCopies { get; set; }  
     public int CategoryId { get; set; }
+    public int Status { get; set; }
 }
 
 public class BookRequest

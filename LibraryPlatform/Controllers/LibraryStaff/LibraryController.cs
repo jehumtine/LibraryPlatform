@@ -7,13 +7,13 @@ namespace LibraryPlatform.Controllers.LibraryStaff;
 [Route("api/[controller]")]
 public class LibraryStaffController(ILibraryStaffService service): ControllerBase
 {
-    [HttpPut("/add-library-staff")]
+    [HttpPost("/add-library-staff")]
     public async Task<Models.LibraryStaffResponse> AddLibraryStaff([FromQuery]LibraryStaffRequest request)
     {
         return await service.CreateLibraryStaff(request);
     }
 
-    [HttpPut("/delete-library-staff")]
+    [HttpPost("/delete-library-staff")]
     public async Task<bool> DeleteLibraryStaff([FromQuery]int id)
     {
         return await service.DeleteLibraryStaff(id);

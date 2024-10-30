@@ -10,4 +10,5 @@ public interface IMemberService
     public Task<bool> DeleteMember(int id);
     
     public Task<List<MemberResponse>> GetAllMembers();
+    public Task<int> GetMemberCount();
 }

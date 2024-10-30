@@ -59,4 +59,28 @@ public class BooksService(LibraryContext libdb): IBooksService
     {
         return await libdb.Categories.Include(x => x.Books).ToListAsync();
     }
+
+    public async Task<int> GetBooksBorrowedCount()
+    {
+        var books = await libdb.Books.ToListAsync();
+        int bookBorrowedCount = 0;
+        foreach (var book in books)
+        {
+            if (book.Status ==1)
+            {
+                var copiesBorrowed = book.TotalCopies - book.AvailableCopies;
+                bookBorrowedCount += copiesBorrowed;    
+            }
+            
+        }
+        
+        return bookBorrowedCount;
+    }
+
+    public async Task<int> GetTotalBooksCount()
+    {
+        
+        var booksCount = await libdb.Books.CountAsync(x => x.Status ==1);
+        return booksCount;
+    }
 }
