@@ -9,6 +9,7 @@ public class Member
     public string PhoneNumber { get; set; }
     public DateTime MembershipDate { get; set; }
     public string Password { get; set; }
+    public int Status { get; set; }
 }
 
 public class MemberResponse

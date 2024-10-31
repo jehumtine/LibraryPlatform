@@ -9,7 +9,7 @@ namespace LibraryPlatform.Controllers.Loan;
 [Route("api/[controller]")]
 public class LoanController(ILoanService service, LibraryContext libd):ControllerBase
 {
-    [HttpPut("/issue-book-loan")]
+    [HttpPost("/issue-book-loan")]
     public async Task<IActionResult> IssueBookLoan([FromQuery] IssueBookLoanRequest loan)
     {
         var book = await libd.Books.Where(x => x.Id == loan.BookId).FirstOrDefaultAsync();
@@ -29,18 +29,18 @@ public class LoanController(ILoanService service, LibraryContext libd):Controlle
         }
     }
 
-    [HttpPut("/service-book-loan")]
+    [HttpPost("/service-book-loan")]
     public async Task<bool> ServiceBookLoan([FromQuery] int id)
     {
         return await service.ServiceBookLoan(id);
     }
 
-    [HttpPut("/get-loans-by-user-id")]
+    [HttpGet("/get-loans-by-user-id")]
     public async Task<List<Models.Loan>> GetLoansByLoanId([FromQuery] int id)
     {
         return await service.GetLoansByUserId(id);
     }
-    [HttpPut("/get-loans-by-staff-id")]
+    [HttpGet("/get-loans-by-staff-id")]
     public async Task<List<Models.Loan>> GetLoansByStaffId([FromQuery] int id)
     {
         return await service.GetLoansByUserId(id);

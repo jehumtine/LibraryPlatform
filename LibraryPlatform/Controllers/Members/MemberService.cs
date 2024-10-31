@@ -78,4 +78,10 @@ public class MemberService(LibraryContext libdb):IMemberService
             MembershipDate = m.MembershipDate
         }).ToListAsync();
     }
+
+    public async Task<int> GetMemberCount()
+    {
+        var count = await libdb.Members.CountAsync(x => x.Status == 1);
+        return count;
+    }
 }

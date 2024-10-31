@@ -14,7 +14,7 @@ public class LibraryStaffService(LibraryContext libdb): ILibraryStaffService
             LastName = request.LastName,
             Email = request.Email,
             Role = request?.Role,
-            Password = request.Password
+            Password = BCrypt.Net.BCrypt.HashPassword(request.Password)
         };
         libdb.LibraryStaffs.Add(libraryStaff);
         await libdb.SaveChangesAsync();
