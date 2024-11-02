@@ -60,14 +60,5 @@ public class BooksController(IBooksService service): ControllerBase
         return await service.GetCategories();
     }
 
-    [HttpGet("/get-book-borrowed-count/")]
-    public async Task<int> BookBorrowedCount()
-    {
-        return await service.GetBooksBorrowedCount();
-    }
-    [HttpGet("/get-books-count/")]
-    public async Task<int> BookCount()
-    {
-        return await service.GetTotalBooksCount();
-    }
+    
 }

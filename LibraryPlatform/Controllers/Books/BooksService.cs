@@ -62,19 +62,7 @@ public class BooksService(LibraryContext libdb): IBooksService
 
     public async Task<int> GetBooksBorrowedCount()
     {
-        var books = await libdb.Books.ToListAsync();
-        int bookBorrowedCount = 0;
-        foreach (var book in books)
-        {
-            if (book.Status ==1)
-            {
-                var copiesBorrowed = book.TotalCopies - book.AvailableCopies;
-                bookBorrowedCount += copiesBorrowed;    
-            }
-            
-        }
-        
-        return bookBorrowedCount;
+        return await libdb.Loans.Where(x => x.Returned == false).CountAsync();
     }
 
     public async Task<int> GetTotalBooksCount()
