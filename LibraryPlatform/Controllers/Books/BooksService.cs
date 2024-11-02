@@ -60,15 +60,21 @@ public class BooksService(LibraryContext libdb): IBooksService
         return await libdb.Categories.Include(x => x.Books).ToListAsync();
     }
 
-    public async Task<int> GetBooksBorrowedCount()
+    public async Task<ServerResponse> DeleteBook(int id)
     {
-        return await libdb.Loans.Where(x => x.Returned == false).CountAsync();
-    }
-
-    public async Task<int> GetTotalBooksCount()
-    {
-        
-        var booksCount = await libdb.Books.CountAsync(x => x.Status ==1);
-        return booksCount;
+        var book = await libdb.Books.FirstOrDefaultAsync(x => x.Id == id);
+        if (book == null)
+        {
+            return new ServerResponse
+            {
+                status = "Book not found",
+            };    
+        }
+        book.Status = 0;
+        await libdb.SaveChangesAsync();
+        return new ServerResponse
+        {
+            status = "Success"
+        };
     }
 }

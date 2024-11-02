@@ -59,6 +59,10 @@ public class BooksController(IBooksService service): ControllerBase
     {
         return await service.GetCategories();
     }
-
+    [HttpGet("/delete-book")]
+    public async Task<ServerResponse> DeleteBook([FromQuery] int id)
+    {
+        return await service.DeleteBook(id);
+    }
     
 }

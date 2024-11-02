@@ -1,6 +1,6 @@
 namespace LibraryPlatform.Models;
 
-public class Response
+public class ServerResponse
 {
     public string status { get; set; }
 }

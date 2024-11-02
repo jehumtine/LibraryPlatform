@@ -2,6 +2,7 @@ using LibraryPlatform.Controllers;
 using LibraryPlatform.Controllers.Authentication;
 using LibraryPlatform.Controllers.LibraryStaff;
 using LibraryPlatform.Controllers.Loan;
+using LibraryPlatform.Controllers.Stats;
 using LibraryPlatform.Database;
 using LibraryPlatform.Models;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@ builder.Services.AddScoped<IBooksService, BooksService>();
 builder.Services.AddScoped<IMemberService, MemberService>();
 builder.Services.AddScoped<ILoanService, LoanService>();
 builder.Services.AddScoped<ILibraryStaffService, LibraryStaffService>();
+builder.Services.AddScoped<IStatsService, StatsService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();

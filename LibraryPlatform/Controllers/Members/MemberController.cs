@@ -36,9 +36,4 @@ public class MemberController(IMemberService service): ControllerBase
     {
         return await service.GetAllMembers();
     }
-    [HttpGet("/get-member-count")]
-    public async Task<int> GetMembersCount()
-    {
-        return await service.GetMemberCount();
-    }
 }

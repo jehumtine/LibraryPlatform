@@ -9,12 +9,12 @@ namespace LibraryPlatform.Controllers.Authentication;
 public class AuthenticationController(IAuthService service): ControllerBase
 {
     [HttpGet("login-member")]
-    public async Task<Response> LoginMember([FromQuery] string email, string password)
+    public async Task<ServerResponse> LoginMember([FromQuery] string email, string password)
     {
         return await service.LoginMember(email, password);
     }
     [HttpGet("login-staff")]
-    public async Task<Response> LoginStaff([FromQuery] string email, string password)
+    public async Task<ServerResponse> LoginStaff([FromQuery] string email, string password)
     {
         return await service.LoginStaff(email, password);
     }
